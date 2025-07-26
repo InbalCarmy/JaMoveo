@@ -88,9 +88,8 @@ const handleScrollSpeed = () => {
   const isHebrew = /[\u0590-\u05FF]/.test(song.title) || /[\u0590-\u05FF]/.test(song.artist);
   const direction = isHebrew ? "rtl" : "ltr";
 
-    // Prepare for line splitting
-  const lyricsLines = song.lyrics?.split("\n") || [];
-  const chordsLines = song.chords?.split("\n") || [];
+    // Prepare content for rendering
+  const content = song.content || [];
 
   return (
     <div className="live-page" dir={direction}>
@@ -124,14 +123,20 @@ const handleScrollSpeed = () => {
     </div>
 
         <div className="song-box">
-        {lyricsLines.map((line: string, idx: number) => (
-            <div key={idx} className="song-line" dir={direction}>
-            {!isVocals && chordsLines[idx] && (
-                <div className="chords-line">{chordsLines[idx]}</div>
-            )}
-            <div className="lyrics-line">{line}</div>
-            </div>
-        ))}
+          {content.map((item: any, idx: number) => {
+            if (item.text === "\n" || item.text === "\n\n") {
+              return <div key={idx} className="line-break">{item.text}</div>;
+            }
+            return (
+              <span key={idx} className="word-container">
+                {!isVocals && item.chord && (
+                  <div className="chord-above">{item.chord}</div>
+                )}
+                <span className="word">{item.text}</span>
+                {idx < content.length - 1 && content[idx + 1].text !== "\n" && content[idx + 1].text !== "\n\n" ? "\u00A0" : ""}
+              </span>
+            );
+          })}
         </div>
 
 <div className="auto-scroll-right">

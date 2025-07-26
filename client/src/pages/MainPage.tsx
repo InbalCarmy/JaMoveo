@@ -12,12 +12,12 @@ export default function MainPage() {
   useEffect(() => {
     if (!user) return;
 
-    // Send join
-    socket.emit("join", {
-      username: user.username,
-      role: user.instrument || "Player"
-    });
+    // Ensure socket is connected
+    if (!socket.connected) {
+      socket.connect();
+    }
 
+    // Set up listeners FIRST before joining
     // Listen for selected song → navigate to LivePage
     socket.on("songSelected", (song) => {
       console.log("🎵 USER: received song selection", song);
@@ -36,6 +36,30 @@ export default function MainPage() {
       setConnectedMembers(members);
     });
 
+    // Ensure socket is connected before joining
+    const joinWhenReady = () => {
+      if (socket.connected) {
+        console.log("🎵 USER: Socket connected, joining...");
+        socket.emit("join", {
+          username: user.username,
+          role: user.instrument || "Player"
+        });
+      } else {
+        console.log("🎵 USER: Socket not connected, waiting for connection...");
+        // Wait for connection and then join
+        socket.once("connect", () => {
+          console.log("🎵 USER: Socket connected, joining...");
+          socket.emit("join", {
+            username: user.username,
+            role: user.instrument || "Player"
+          });
+        });
+      }
+    };
+
+    // Small delay to ensure listeners are set up, then join
+    setTimeout(joinWhenReady, 200);
+
     return () => {
       socket.off("songSelected");
       socket.off("quit");
@@ -44,7 +68,11 @@ export default function MainPage() {
   }, [user, navigate]);
 
   const handleLogout = () => {
-    navigate("/"); // Can also add signOut from Firebase
+    // Emit logout event to server before disconnecting
+    socket.emit("logout", { username: user?.username });
+    // Disconnect socket to ensure clean removal
+    socket.disconnect();
+    navigate("/");
   };
 
   return (

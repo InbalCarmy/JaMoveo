@@ -16,6 +16,11 @@ export default function AdminPage() {
   useEffect(() => {
     if (!user) return;
 
+    // Ensure socket is connected
+    if (!socket.connected) {
+      socket.connect();
+    }
+
     socket.on("connect", () => {
       console.log("✅ CLIENT: connected to Socket.IO server. ID:", socket.id);
     });
@@ -24,60 +29,85 @@ export default function AdminPage() {
       console.log("❌ CLIENT: disconnected from Socket.IO server");
     });
 
+    // Set up listeners FIRST before joining
+    socket.on("updateMembers", (members) => {
+      console.log("🎸 CLIENT: updateMembers received", members);
+      setConnectedMembers(members);
+    });
+
     console.log("🎵 CLIENT: sending join", {
       username: user.username,
       role: user.role === "admin" ? "Conductor (Admin)" : user.role,
     });
 
-    socket.emit("join", {
-      username: user.username,
-      role: user.role === "admin" ? "Conductor (Admin)" : user.role,
+    // Ensure socket is connected before joining
+    const joinWhenReady = () => {
+      if (socket.connected) {
+        console.log("🎵 ADMIN: Socket connected, joining...");
+        socket.emit("join", {
+          username: user.username,
+          role: user.role === "admin" ? "Conductor (Admin)" : user.role,
+        });
+      } else {
+        console.log("🎵 ADMIN: Socket not connected, waiting for connection...");
+        // Wait for connection and then join
+        socket.once("connect", () => {
+          console.log("🎵 ADMIN: Socket connected, joining...");
+          socket.emit("join", {
+            username: user.username,
+            role: user.role === "admin" ? "Conductor (Admin)" : user.role,
+          });
+        });
+      }
+    };
+
+    // Small delay to ensure listeners are set up, then join
+    setTimeout(joinWhenReady, 200);
+
+    // Listen for selected song – admin also goes to LivePage
+    socket.on("songSelected", (song) => {
+      console.log("🎵 ADMIN: received songSelected", song);
+      navigate("/live", { state: { song } });
     });
 
-    socket.on("updateMembers", (members) => {
-      console.log("🎸 CLIENT: updateMembers received", members);
-      setConnectedMembers(members);
-
-        // Listen for selected song – admin also goes to LivePage
-  socket.on("songSelected", (song) => {
-    console.log("🎵 ADMIN: received songSelected", song);
-    navigate("/live", { state: { song } });
-  });
-
     // Listen for song end – will return admin to management page
-  socket.on("quit", () => {
-    console.log("⏹️ ADMIN: quit received");
-    navigate("/admin");
-  });
-      
+    socket.on("quit", () => {
+      console.log("⏹️ ADMIN: quit received");
+      navigate("/admin");
     });
 
     return () => {
       socket.off("connect");
       socket.off("disconnect");
       socket.off("updateMembers");
+      socket.off("songSelected");
+      socket.off("quit");
     };
   }, [user, navigate]);
 
   const handleLogout = () => {
+    // Emit logout event to server before disconnecting
+    socket.emit("logout", { username: user?.username });
+    // Disconnect socket to ensure clean removal
+    socket.disconnect();
     navigate("/");
   };
 
-
-const searchSongs = async () => {
-  if (!searchQuery.trim()) return;
-  setLoadingSongs(true);
-  try {
-    const res = await fetch(`/songs?q=${encodeURIComponent(searchQuery)}`);
-    const data = await res.json();
-    // Pass results to ResultsPage
-    navigate("/results", { state: { results: data } });
-  } catch (err) {
-    console.error("❌ Error fetching songs:", err);
-  } finally {
-    setLoadingSongs(false);
-  }
-};
+  const searchSongs = async () => {
+    if (!searchQuery.trim()) return;
+    setLoadingSongs(true);
+    try {
+      const apiUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:10000' : '';
+      const res = await fetch(`${apiUrl}/songs?q=${encodeURIComponent(searchQuery)}`);
+      const data = await res.json();
+      // Pass results to ResultsPage
+      navigate("/results", { state: { results: data } });
+    } catch (err) {
+      console.error("❌ Error fetching songs:", err);
+    } finally {
+      setLoadingSongs(false);
+    }
+  };
 
   const selectSong = (song: any) => {
     console.log("🎵 ADMIN: selected song", song);
@@ -138,9 +168,9 @@ const searchSongs = async () => {
           <div className="search-tips">
             <h3>Search Tips:</h3>
             <ul>
-              <li>🎵 Try searching for song titles like "Imagine" or "Wonderwall"</li>
-              <li>🎵 Search by artist name like "John Lennon" or "Oasis"</li>
-              <li>🎵 Hebrew songs are also supported – try "שיר לשלום"</li>
+              <li>🎵 Try searching for song titles like "Amazing Grace" or "Camptown Races"</li>
+              <li>🎵 Search by artist name like "Stephen Foster" or "John Newton"</li>
+              <li>🎵 Hebrew songs are supported – try "הללויה" or "שיר לשלום"</li>
               <li>🎵 Search is case-insensitive and matches partial words</li>
             </ul>
           </div>
