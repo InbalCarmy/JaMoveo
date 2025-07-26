@@ -1,0 +1,46 @@
+/* CSS Custom Properties for JaMoveo Application */
+:root {
+  /* Colors */
+  --primary-gold: #FFD700;
+  --hover-gold: #FFC300;
+  --dark-blue: #001F3F;
+  --dark-blue-secondary: #00122E;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  
+  /* Gradients */
+  --bg-gradient: linear-gradient(160deg, var(--dark-blue), var(--dark-blue-secondary));
+  
+  /* Typography */
+  --font-family: Arial, sans-serif;
+  --font-size-small: 0.9rem;
+  --font-size-base: 1rem;
+  --font-size-large: 1.1rem;
+  --font-size-xl: 1.3rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  --spacing-3xl: 40px;
+  
+  /* Borders */
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+  --border-gold: 2px solid var(--primary-gold);
+  --border-gold-thick: 3px solid var(--primary-gold);
+  
+  /* Shadows */
+  --shadow-gold: 0px 0px 20px var(--primary-gold);
+  --shadow-gold-hover: 0 4px 8px rgba(255, 215, 0, 0.3);
+  
+  /* Transitions */
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+}

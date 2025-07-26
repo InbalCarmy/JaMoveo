@@ -10,10 +10,13 @@ const app = express();
 const httpServer = createServer(app);
 
 // Configure CORS based on environment
-const corsOrigin = process.env.NODE_ENV === 'production' ? false : "http://localhost:3000";
+const corsOrigin = process.env.NODE_ENV === 'production' 
+  ? process.env.ALLOWED_ORIGINS?.split(',') || false 
+  : "http://localhost:3000";
+
 const io = new Server(httpServer, { 
   cors: { 
-    origin: corsOrigin || "*",
+    origin: corsOrigin,
     credentials: true 
   } 
 });
@@ -28,7 +31,7 @@ const songFiles = fs.readdirSync(dataDir).filter(file => file.endsWith(".json"))
 
 // Configure Express CORS middleware
 app.use(cors({
-  origin: corsOrigin || "*",
+  origin: corsOrigin,
   credentials: true
 }));
 app.use(express.json());
@@ -51,15 +54,40 @@ let songs = songFiles.map(file => {
 // Connected users list
 let connectedUsers = [];
 
+// Input sanitization function
+const sanitizeInput = (input) => {
+  if (typeof input !== 'string') return '';
+  return input.trim().replace(/[<>\"';&\\]/g, '').substring(0, 100);
+};
+
 // Endpoint for song search
 app.get("/songs", (req, res) => {
-  const query = (req.query.q || "").toLowerCase();
-  const results = songs.filter(
-    s =>
-      s.title.toLowerCase().includes(query) ||
-      s.artist.toLowerCase().includes(query)
-  );
-  res.json(results);
+  try {
+    const rawQuery = req.query.q;
+    
+    // Input validation
+    if (!rawQuery || typeof rawQuery !== 'string') {
+      return res.status(400).json({ error: 'Invalid search query' });
+    }
+    
+    // Sanitize and validate input
+    const query = sanitizeInput(rawQuery).toLowerCase();
+    
+    if (query.length < 1) {
+      return res.status(400).json({ error: 'Search query too short' });
+    }
+    
+    const results = songs.filter(
+      s =>
+        s.title.toLowerCase().includes(query) ||
+        s.artist.toLowerCase().includes(query)
+    );
+    
+    res.json(results);
+  } catch (error) {
+    console.error('Search error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // Socket.IO real-time logic
@@ -80,25 +108,39 @@ io.on("connection", socket => {
 
   // When a user joins → add/update them in the connected users list
   socket.on("join", (userData) => {
-    // User join request received
+    try {
+      // Input validation
+      if (!userData || typeof userData !== 'object') {
+        return;
+      }
+      
+      const username = sanitizeInput(userData.username);
+      const role = sanitizeInput(userData.role);
+      
+      if (!username || username.length < 2) {
+        return;
+      }
+      
+      // Remove any previous entry with the same username OR same socketId to avoid duplicates
+      connectedUsers = connectedUsers.filter(u => u.username !== username && u.socketId !== socket.id);
 
-    // Remove any previous entry with the same username OR same socketId to avoid duplicates
-    connectedUsers = connectedUsers.filter(u => u.username !== userData.username && u.socketId !== socket.id);
+      // Add the new/updated user
+      connectedUsers.push({
+        socketId: socket.id,
+        username: username,
+        role: role || 'Player'
+      });
 
-    // Add the new/updated user
-    connectedUsers.push({
-      socketId: socket.id,
-      username: userData.username,
-      role: userData.role
-    });
+      // User list updated
 
-    // User list updated
-
-    // Send current member list to the joining user immediately
-    socket.emit("updateMembers", connectedUsers);
-    
-    // Also broadcast updated user list to everyone
-    io.emit("updateMembers", connectedUsers);
+      // Send current member list to the joining user immediately
+      socket.emit("updateMembers", connectedUsers);
+      
+      // Also broadcast updated user list to everyone
+      io.emit("updateMembers", connectedUsers);
+    } catch (error) {
+      console.error('Join error:', error);
+    }
   });
 
   // When a user explicitly logs out

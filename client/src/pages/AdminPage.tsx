@@ -98,11 +98,23 @@ export default function AdminPage() {
     setLoadingSongs(true);
     try {
       const res = await fetch(`${API_BASE_URL}/songs?q=${encodeURIComponent(searchQuery)}`);
+      
+      if (!res.ok) {
+        throw new Error(`Search failed: ${res.status} ${res.statusText}`);
+      }
+      
       const data = await res.json();
+      
+      if (data.error) {
+        alert(`Search error: ${data.error}`);
+        return;
+      }
+      
       // Pass results to ResultsPage
       navigate("/results", { state: { results: data } });
     } catch (err) {
-      console.error("❌ Error fetching songs:", err);
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred';
+      alert(`Error searching songs: ${errorMessage}`);
     } finally {
       setLoadingSongs(false);
     }
