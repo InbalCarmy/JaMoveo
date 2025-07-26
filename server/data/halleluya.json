@@ -1,7 +1,196 @@
 {
   "title": "הללויה",
   "artist": "מילים: שמרית אור, לחן: קובי אשרת",
-  "lyrics": "הללויה לעולם\nהללויה ישירו כולם\nהללויה יד echo הלב\nהללויה על מה שהיה\nומה שעוד לא היה\n\nהללויה לשיר\nהללויה למילים\nהללויה לחיים\nהללויה לך ולי\n\nהללויה לעולם\nהללויה ישירו כולם\nהללויה יד echo הלב\nהללויה על מה שהיה\nומה שעוד לא היה",
-  "chords": "C  G  Am  F\nDm  G  C  C\nC  G  Am  F\nDm  G  C  C\n\nC  G  Am  F\nDm  G  C  C\nC  G  Am  F\nDm  G  C  C",
+  "content": [
+    {
+      "text": "הללויה",
+      "chord": "C"
+    },
+    {
+      "text": "לעולם"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "הללויה",
+      "chord": "Dm"
+    },
+    {
+      "text": "ישירו"
+    },
+    {
+      "text": "כולם",
+      "chord": "G"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "הללויה",
+      "chord": "C"
+    },
+    {
+      "text": "יד"
+    },
+    {
+      "text": "הלב"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "הללויה",
+      "chord": "Dm"
+    },
+    {
+      "text": "על"
+    },
+    {
+      "text": "מה",
+      "chord": "G"
+    },
+    {
+      "text": "שהיה"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "ומה"
+    },
+    {
+      "text": "שעוד"
+    },
+    {
+      "text": "לא"
+    },
+    {
+      "text": "היה"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "הללויה",
+      "chord": "Dm"
+    },
+    {
+      "text": "לשיר"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "הללויה",
+      "chord": "C"
+    },
+    {
+      "text": "למילים"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "הללויה",
+      "chord": "Dm"
+    },
+    {
+      "text": "לחיים"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "הללויה",
+      "chord": "C"
+    },
+    {
+      "text": "לך"
+    },
+    {
+      "text": "ולי",
+      "chord": "G"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "הללויה",
+      "chord": "C"
+    },
+    {
+      "text": "לעולם"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "הללויה",
+      "chord": "Dm"
+    },
+    {
+      "text": "ישירו"
+    },
+    {
+      "text": "כולם",
+      "chord": "G"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "הללויה"
+    },
+    {
+      "text": "יד"
+    },
+    {
+      "text": "הלב"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "הללויה",
+      "chord": "C"
+    },
+    {
+      "text": "על"
+    },
+    {
+      "text": "מה",
+      "chord": "G"
+    },
+    {
+      "text": "שהיה"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "ומה",
+      "chord": "Dm"
+    },
+    {
+      "text": "שעוד"
+    },
+    {
+      "text": "לא",
+      "chord": "G"
+    },
+    {
+      "text": "היה"
+    },
+    {
+      "text": "\n"
+    }
+  ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Hallelujah_song_sheet.jpg/256px-Hallelujah_song_sheet.jpg"
 }
