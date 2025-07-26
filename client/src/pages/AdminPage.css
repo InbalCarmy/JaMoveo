@@ -1,0 +1,189 @@
+.admin-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, #0a2a66, #051838);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* כותרת עליונה */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.logo span {
+  color: #ffdd57; /* צהוב */
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.admin-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.welcome {
+  font-weight: bold;
+}
+
+.logout-btn {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.logout-btn:hover {
+  background: #e63939;
+}
+
+.admin-content {
+  flex: 1;
+  display: flex;
+  padding: 40px;
+  gap: 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.search-section {
+  flex: 2;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2.5vw;
+}
+
+.search-title {
+  font-size: clamp(1.8rem, 1.8vw, 3rem);
+  color: #ffdd57;
+  margin-bottom: 15px;
+}
+
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.search-btn {
+  background: #ffdd57;
+  color: black;
+  border: none;
+  padding: clamp(8px, 1.2vw, 14px) clamp(12px, 2vw, 20px);
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: clamp(0.9rem, 1vw, 1.4rem);
+}
+.search-btn:hover {
+  background: #ffcc00;
+}
+
+/* טיפים */
+.search-tips {
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  padding: 15px;
+}
+.search-tips h3 {
+  color: #ffdd57;
+  margin-bottom: 10px;
+  font-size: clamp(1rem, 1vw, 1.6rem);
+
+}
+.search-tips ul {
+  list-style: none;
+  padding: 0;
+}
+.search-tips li {
+  margin-bottom: 6px;
+  font-size: clamp(0.9rem, 0.5vw, 1.3rem);
+
+}
+
+.admin-sidebar {
+  flex: 0.4;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 300px;
+  max-width: 400px;
+}
+
+
+.members-box, .controls-box {
+  background: rgba(255,255,255,0.05);
+  padding: 15px;
+  border-radius: 12px;
+}
+.controls-box {
+  text-align: left;   /* כל התוכן יהיה מיושר לצד שמאל */
+  padding-left: 20px; /* שומר על ריווח מינימלי */
+}
+.controls-box ul {
+  list-style: none;
+  padding-left: 0;  /* מבטל ריווח מוגזם של ul */
+  margin: 0;
+}
+.members-box h3,
+.controls-box h3 {
+  color: #ffdd57;
+  font-size: clamp(1.1rem, 1vw, 1.8rem);
+  margin-bottom: 12px;
+
+}
+
+.controls-box li {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* אייקון קטן ואז טקסט */
+  margin-bottom: 8px;
+  font-size: clamp(0.9rem, 0.5vw, 1.3rem);
+}
+
+.members-box ul {
+  list-style: none;
+  padding: 0;
+}
+.members-box li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: clamp(0.9rem, 0.5vw, 1.8rem);
+
+}
+.member-name {
+  font-weight: bold;
+}
+.member-role {
+  background: rgba(255,255,255,0.1);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/* תחתית */
+.admin-footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #ddd;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}

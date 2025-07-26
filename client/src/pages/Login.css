@@ -1,0 +1,90 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* רקע מלא לדף */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #0a2a66, #051838);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* התיבה המרכזית */
+.login-container {
+  background: rgba(10, 50, 100, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  width: 360px;
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* כותרת */
+.login-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ffdd57; /* צהוב */
+}
+
+.login-subtitle {
+  font-size: 0.9rem;
+  color: #d0d0d0;
+  margin-bottom: 30px;
+}
+
+/* שדות קלט */
+.login-input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.95rem;
+}
+
+.login-input::placeholder {
+  color: #bbbbbb;
+}
+
+/* כפתור */
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background: #ffdd57;
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-button:hover {
+  background: #ffcc00;
+}
+
+/* טקסט למטה */
+.signup-text {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #ddd;
+}
+
+.signup-link {
+  color: #ffdd57;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}

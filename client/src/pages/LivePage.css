@@ -1,0 +1,197 @@
+.live-page {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #001F3F, #00122E);
+  color: #fff;
+  padding: 40px 20px;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+font-family: Arial, sans-serif;
+
+}
+.live-header-top {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 40px;
+}
+
+.live-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.live-badge {
+  background: rgba(0, 255, 0, 0.15);
+  color: #00ff66;
+  /* font-weight: bold; */
+  padding: 1px 14px;
+  border-radius: 20px;
+  font-size: 1rem;
+}
+
+.quit-session-btn {
+  background: #FF3B3B;
+  color: #fff;
+  font-size: 1.1rem;
+  /* font-weight: bold; */
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.quit-session-btn:hover {
+  background: #e60000;
+}
+
+
+.live-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.song-title {
+  color: #FFD700; /* צהוב */
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.song-artist {
+    color: #ccc;         /* אפור בהיר עדין יותר */
+  font-size: 1.4rem;   /* קצת יותר קטן מהטייטל */
+  font-weight: 300;    /* משקל רזה יותר */
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+.song-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 80px;
+  box-shadow: 0px 0px 20px #FFD700;
+  border: 2px solid #FFD700;
+
+
+}
+
+.song-line {
+    margin-bottom: 20px;
+}
+.chords-line,
+.lyrics-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* רווח בין מילים */
+  justify-content: flex-start; /* לשמאל/ימין בהתאם לכיוון */
+}
+
+.lyrics-line {
+  white-space: pre-wrap; /* שומר על שבירות שורה */
+  text-align: inherit;   /* מכבד את RTL או LTR */
+  direction: inherit;    /* לוקח את הכיוון מההורה */
+}
+
+.chords-line {
+  white-space: pre-wrap;
+  text-align: inherit;
+  direction: inherit;
+  color: #FFD700; /* שיהיו בצהוב תמיד */
+  font-weight: bold;
+}
+
+.chord-cell {
+  min-width: 40px; /* שיהיה מקום גם אם מילה קצרה */
+  text-align: center;
+  color: #FFD700; /* צהוב */
+}
+
+.lyrics-cell {
+  min-width: 40px;
+  text-align: center;
+}
+
+.song-part {
+  margin-right: 10px;
+}
+
+.chords-line {
+  color: #FFD700; /* אקורדים בצהוב */
+  /* font-weight: bold; */
+}
+
+/* כפתורים צפים */
+.floating-buttons {
+  position: fixed;
+  bottom: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+.auto-scroll-right {
+  position: fixed;
+  bottom: 20px;  /* צמוד לתחתית */
+  right: 40px;   /* צמוד לימין */
+  z-index: 1000; /* כדי שתמיד יהיה מעל הכל */
+}
+
+.auto-scroll-btn {
+  background: #FFD700;
+  color: #001F3F;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.auto-scroll-btn:hover {
+  background: #FFC300;
+}
+
+
+.toggle-scroll-btn{
+  background: #FFD700;
+  color: #001F3F;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.toggle-scroll-btn:hover{
+  background: #FFC300;
+}
+
+.scroll-speed-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.scroll-speed-control input[type="range"] {
+  width: 150px;
+}

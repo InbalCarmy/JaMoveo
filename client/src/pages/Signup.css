@@ -1,0 +1,79 @@
+.signup-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #0a2a66, #051838);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.signup-container {
+  background: rgba(10, 50, 100, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  width: 380px;
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.signup-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ffdd57;
+}
+
+.signup-subtitle {
+  font-size: 0.9rem;
+  color: #d0d0d0;
+  margin-bottom: 20px;
+}
+
+.signup-input,
+.signup-select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.95rem;
+}
+
+.signup-input::placeholder {
+  color: #bbbbbb;
+}
+
+.signup-button {
+  width: 100%;
+  padding: 12px;
+  background: #ffdd57;
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.signup-button:hover {
+  background: #ffcc00;
+}
+
+.signup-text {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #ddd;
+}
+
+.signup-link {
+  color: #ffdd57;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}

@@ -1,0 +1,149 @@
+.main-page {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #001F3F, #00122E);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+
+/* כותרת עליונה */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid #FFD700;
+}
+
+.logo {
+  color: #FFD700;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logout-btn {
+  background: #FFD700;
+  color: #001F3F;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background: #FFC300;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.waiting-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 3px solid #FFD700;
+  box-shadow: 0px 0px 20px #FFD700;
+  border-radius: 12px;
+  padding: 4vw;
+  text-align: center;
+  max-width: 600px;
+  min-width: 350px;
+  flex: 1;
+}
+
+.waiting-title {
+  color: #FFD700;
+  font-size: clamp(1.8rem, 2.5vw, 3rem);
+  margin-bottom: 20px;
+}
+
+.music-icons {
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
+  margin-bottom: 20px;
+}
+
+.waiting-text {
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  opacity: 0.9;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 0.4;
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.members-box,
+.session-status-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #FFD700;
+  border-radius: 12px;
+  padding: 2vw;
+}
+
+.members-box h3,
+.session-status-box h3 {
+  color: #FFD700;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.members-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.members-box li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.member-name {
+  font-weight: bold;
+}
+
+.member-role {
+  background: #444;
+  color: #FFD700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.status-green {
+  color: #00FF66;
+  font-weight: bold;
+}
+
+/* תחתית */
+.main-footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 1.1rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
+  opacity: 0.9;
+}

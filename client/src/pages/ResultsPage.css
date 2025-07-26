@@ -1,0 +1,77 @@
+.results-page {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #001F3F, #00122E);
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+
+}
+
+.results-title {
+  color: #FFD700;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.song-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #FFD700;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.song-info h2 {
+  color: #FFD700;
+  margin: 0 0 5px 0;
+}
+
+.song-info p {
+  margin: 0;
+  opacity: 0.8;
+}
+.song-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.select-btn {
+  background: #FFD700;
+  color: #001F3F;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.select-btn:hover {
+  background: #FFC300;
+}
+
+.back-btn {
+  margin-top: 30px;
+  background: #FFD700;
+  color: #001F3F;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
