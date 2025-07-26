@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { socket } from "../socket";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { ConnectedMember, Song } from "../types";
+import { SOCKET_JOIN_DELAY } from "../constants";
 import "./MainPage.css";
 
 export default function MainPage() {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const [connectedMembers, setConnectedMembers] = useState<any[]>([]);
+  const [connectedMembers, setConnectedMembers] = useState<ConnectedMember[]>([]);
 
   useEffect(() => {
     if (!user) return;
@@ -58,7 +60,7 @@ export default function MainPage() {
     };
 
     // Small delay to ensure listeners are set up, then join
-    setTimeout(joinWhenReady, 200);
+    setTimeout(joinWhenReady, SOCKET_JOIN_DELAY);
 
     return () => {
       socket.off("songSelected");

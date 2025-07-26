@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { socket } from "../socket";
 import { useAuth } from "../context/AuthContext";
+import { ConnectedMember, Song } from "../types";
+import { API_BASE_URL } from "../config/api";
+import { SOCKET_JOIN_DELAY } from "../constants";
 import "./AdminPage.css";
 
 export default function AdminPage() {
-  const [connectedMembers, setConnectedMembers] = useState<any[]>([]);
+  const [connectedMembers, setConnectedMembers] = useState<ConnectedMember[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults] = useState<any[]>([]);
+  const [searchResults] = useState<Song[]>([]);
   const [loadingSongs, setLoadingSongs] = useState(false);
 
   const navigate = useNavigate();
@@ -62,7 +65,7 @@ export default function AdminPage() {
     };
 
     // Small delay to ensure listeners are set up, then join
-    setTimeout(joinWhenReady, 200);
+    setTimeout(joinWhenReady, SOCKET_JOIN_DELAY);
 
     // Listen for selected song – admin also goes to LivePage
     socket.on("songSelected", (song) => {
@@ -97,8 +100,7 @@ export default function AdminPage() {
     if (!searchQuery.trim()) return;
     setLoadingSongs(true);
     try {
-      const apiUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:10000' : '';
-      const res = await fetch(`${apiUrl}/songs?q=${encodeURIComponent(searchQuery)}`);
+      const res = await fetch(`${API_BASE_URL}/songs?q=${encodeURIComponent(searchQuery)}`);
       const data = await res.json();
       // Pass results to ResultsPage
       navigate("/results", { state: { results: data } });

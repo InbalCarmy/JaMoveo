@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { socket } from "../socket";
+import { Song, SongContent } from "../types";
+import { AUTO_SCROLL_BASE_INTERVAL, AUTO_SCROLL_SPEED_STEPS } from "../constants";
 import "./LivePage.css";
 
 export default function LivePage() {
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useAuth();
-  // const [scrollSpeed, setScrollSpeed] = useState(50);
 
   const [speedLevel, setSpeedLevel] = useState(1);
-  const speedSteps = [1, 1.25, 1.5, 2];
   const song = location.state?.song;
   const [autoScroll, setAutoScroll] = useState(false);
 
@@ -43,15 +43,15 @@ const handleScrollSpeed = () => {
     setAutoScroll(true);
     setSpeedLevel(1);
   } else {
-    const currentIndex = speedSteps.indexOf(speedLevel);
-    const nextIndex = (currentIndex + 1) % speedSteps.length;
+    const currentIndex = AUTO_SCROLL_SPEED_STEPS.indexOf(speedLevel);
+    const nextIndex = (currentIndex + 1) % AUTO_SCROLL_SPEED_STEPS.length;
 
     // If we returned to the beginning → stop
     if (nextIndex === 0) {
       setAutoScroll(false);
       setSpeedLevel(1);
     } else {
-      setSpeedLevel(speedSteps[nextIndex]);
+      setSpeedLevel(AUTO_SCROLL_SPEED_STEPS[nextIndex]);
     }
   }
 };
@@ -61,7 +61,7 @@ const handleScrollSpeed = () => {
   let scrollInterval: NodeJS.Timeout;
 
   if (autoScroll) {
-    const baseInterval = 50; // Base for normal scroll
+    const baseInterval = AUTO_SCROLL_BASE_INTERVAL;
     const intervalSpeed = baseInterval / speedLevel; // Higher speed → shorter time
     scrollInterval = setInterval(() => {
       window.scrollBy(0, 1); // scroll down
@@ -123,7 +123,7 @@ const handleScrollSpeed = () => {
     </div>
 
         <div className="song-box">
-          {content.map((item: any, idx: number) => {
+          {content.map((item: SongContent, idx: number) => {
             if (item.text === "\n" || item.text === "\n\n") {
               return <div key={idx} className="line-break">{item.text}</div>;
             }
