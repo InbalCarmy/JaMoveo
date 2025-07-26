@@ -68,7 +68,7 @@ const searchSongs = async () => {
   if (!searchQuery.trim()) return;
   setLoadingSongs(true);
   try {
-    const res = await fetch(`http://localhost:10000/songs?q=${encodeURIComponent(searchQuery)}`);
+    const res = await fetch(`/songs?q=${encodeURIComponent(searchQuery)}`);
     const data = await res.json();
     // ✅ מעבירים את התוצאות ל-ResultsPage
     navigate("/results", { state: { results: data } });
