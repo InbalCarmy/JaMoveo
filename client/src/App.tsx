@@ -14,8 +14,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<SignupUser />} />         {/* רגיל */}
-        <Route path="/admin/signup" element={<SignupAdmin />} /> {/* רק אדמין */}
+        <Route path="/signup" element={<SignupUser />} />         {/* Regular */}
+        <Route path="/admin/signup" element={<SignupAdmin />} /> {/* Admin only */}
         <Route path="/main" element={<MainPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/results" element={<ResultsPage />} />

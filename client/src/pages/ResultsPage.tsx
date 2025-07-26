@@ -6,17 +6,17 @@ export default function ResultsPage() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // נקבל את תוצאות החיפוש מה-AdminPage
+  // Receive search results from AdminPage
   const results = location.state?.results || [];
   
 
   const selectSong = (song: any) => {
     console.log("🎵 ADMIN: selected song from results", song);
 
-    // משדר את כל אובייקט השיר לשרת → כל המשתמשים יקבלו
+    // Send entire song object to server → all users will receive
     socket.emit("selectSong", song);
 
-    // גם האדמין עובר ללייב עם אותו שיר
+    // Admin also goes to live with the same song
     navigate("/live", { state: { song } });
   };
 

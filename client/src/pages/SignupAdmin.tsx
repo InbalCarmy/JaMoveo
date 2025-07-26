@@ -16,7 +16,7 @@ export default function SignupAdmin() {
     e.preventDefault();
 
     try {
-      // בדיקת ייחודיות username
+      // Check username uniqueness
       const usersRef = collection(db, "users");
       const q = query(usersRef, where("username", "==", username));
       const querySnapshot = await getDocs(q);
@@ -25,19 +25,19 @@ export default function SignupAdmin() {
         return;
       }
 
-      // יצירת משתמש אדמין ב-Auth
+      // Create admin user in Auth
       const cred = await createUserWithEmailAndPassword(auth, email, password);
 
-      // שמירת פרטי המשתמש ב-Firestore
+      // Save user details in Firestore
       await setDoc(doc(db, "users", cred.user.uid), {
         username,
         email,
         instrument,
-        role: "admin" // ✅ תמיד ADMIN
+        role: "admin" // Always ADMIN
       });
 
       alert("✅ Admin Signup successful!");
-      navigate("/"); // חזרה לעמוד login
+      navigate("/"); // Return to login page
     } catch (error: any) {
       alert("❌ Error: " + error.message);
     }
@@ -76,18 +76,6 @@ export default function SignupAdmin() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-
-          {/* <select
-            className="signup-select"
-            value={instrument}
-            onChange={(e) => setInstrument(e.target.value)}
-          >
-            <option value="guitar">Guitar</option>
-            <option value="drums">Drums</option>
-            <option value="bass">Bass</option>
-            <option value="keyboard">Keyboard</option>
-            <option value="vocals">Vocals</option>
-          </select> */}
 
           <button type="submit" className="signup-button">
             SIGN UP AS ADMIN

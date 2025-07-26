@@ -35,12 +35,12 @@ let songs = songFiles.map(file => {
   };
 });
 
-console.log("✅ Loaded songs:", songs.map(s => s.title));
+console.log("Loaded songs:", songs.map(s => s.title));
 
-// ✅ Connected users list
+// Connected users list
 let connectedUsers = [];
 
-// ✅ Endpoint for song search
+// Endpoint for song search
 app.get("/songs", (req, res) => {
   const query = (req.query.q || "").toLowerCase();
   const results = songs.filter(
@@ -51,9 +51,9 @@ app.get("/songs", (req, res) => {
   res.json(results);
 });
 
-// ✅ Socket.IO real-time logic
+// Socket.IO real-time logic
 io.on("connection", socket => {
-  console.log("✅ SERVER: client connected", socket.id);
+  console.log("SERVER: client connected", socket.id);
 
   // When the admin selects a song → broadcast to all users
   socket.on("selectSong", (song) => {
@@ -102,22 +102,22 @@ io.on("connection", socket => {
 });
 
 
-// ✅ Serve the React build (client)
+// Serve the React build (client)
 // ----------------------------------------------------------
 const clientBuildPath = path.join(__dirname, "../client/build");
 
 // Serve static React build
 app.use(express.static(clientBuildPath));
 
-// ✅ Catch-all (for React Router) - compatible with Express v5
+// Catch-all (for React Router) - compatible with Express v5
 app.get(/.*/, (req, res) => {
   res.sendFile(path.join(clientBuildPath, "index.html"));
 });
 // ----------------------------------------------------------
 
 
-// ✅ Start the server
+// Start the server
 const PORT = process.env.PORT || 10000;
 httpServer.listen(PORT, () =>
-  console.log(`✅ Server running on http://localhost:${PORT}`)
+  console.log(`Server running on http://localhost:${PORT}`)
 );

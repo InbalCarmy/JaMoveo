@@ -13,7 +13,7 @@ export default function Login() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      // חיפוש אימייל לפי username
+      // Search email by username
       const usersRef = collection(db, "users");
       const q = query(usersRef, where("username", "==", username));
       const querySnapshot = await getDocs(q);
@@ -34,10 +34,10 @@ export default function Login() {
         // userId = docSnap.id;
       });
 
-      // התחברות עם אימייל+סיסמה
+      // Login with email+password
       await signInWithEmailAndPassword(auth, emailFromDB, password);
 
-      // הפניה לפי role
+      // Redirect by role
       if (roleFromDB === "admin") {
         navigate("/admin");
       } else {

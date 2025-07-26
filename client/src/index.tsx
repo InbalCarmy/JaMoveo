@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { AuthProvider } from './context/AuthContext';  // ✅ מוסיפים את ה-Provider
+import { AuthProvider } from './context/AuthContext';  // Adding the Provider
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <AuthProvider>     {/* ✅ עוטף את כל האפליקציה */}
+    <AuthProvider>     {/* Wraps the entire application */}
       <App />
     </AuthProvider>
   </React.StrictMode>

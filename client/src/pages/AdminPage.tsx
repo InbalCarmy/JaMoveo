@@ -38,13 +38,13 @@ export default function AdminPage() {
       console.log("🎸 CLIENT: updateMembers received", members);
       setConnectedMembers(members);
 
-        // ✅ מאזין לשיר שנבחר – גם אדמין עובר ל-LivePage
+        // Listen for selected song – admin also goes to LivePage
   socket.on("songSelected", (song) => {
     console.log("🎵 ADMIN: received songSelected", song);
     navigate("/live", { state: { song } });
   });
 
-    // ✅ מאזין לסיום שיר – יחזיר את האדמין לדף ניהול
+    // Listen for song end – will return admin to management page
   socket.on("quit", () => {
     console.log("⏹️ ADMIN: quit received");
     navigate("/admin");
@@ -70,7 +70,7 @@ const searchSongs = async () => {
   try {
     const res = await fetch(`/songs?q=${encodeURIComponent(searchQuery)}`);
     const data = await res.json();
-    // ✅ מעבירים את התוצאות ל-ResultsPage
+    // Pass results to ResultsPage
     navigate("/results", { state: { results: data } });
   } catch (err) {
     console.error("❌ Error fetching songs:", err);
@@ -97,7 +97,7 @@ const searchSongs = async () => {
       </header>
 
       <main className="admin-content">
-        {/* תיבת חיפוש שירים */}
+        {/* Song search box */}
         <section className="search-section">
           <h2 className="search-title">Search any song...</h2>
           <div className="search-box">
@@ -146,7 +146,7 @@ const searchSongs = async () => {
           </div>
         </section>
 
-        {/* צד ימין - חברים מחוברים + בקרות אדמין */}
+        {/* Right side - connected members + admin controls */}
         <aside className="admin-sidebar">
           <div className="members-box">
             <h3>Band Members Online</h3>

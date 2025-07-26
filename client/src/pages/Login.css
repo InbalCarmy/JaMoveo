@@ -4,7 +4,7 @@ html, body, #root {
   padding: 0;
 }
 
-/* רקע מלא לדף */
+/* Full page background */
 .login-page {
   display: flex;
   justify-content: center;
@@ -15,7 +15,7 @@ html, body, #root {
   font-family: Arial, sans-serif;
 }
 
-/* התיבה המרכזית */
+/* Central box */
 .login-container {
   background: rgba(10, 50, 100, 0.3);
   backdrop-filter: blur(10px);
@@ -26,12 +26,12 @@ html, body, #root {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* כותרת */
+/* Header */
 .login-title {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #ffdd57; /* צהוב */
+  color: #ffdd57; /* Yellow */
 }
 
 .login-subtitle {
@@ -40,7 +40,7 @@ html, body, #root {
   margin-bottom: 30px;
 }
 
-/* שדות קלט */
+/* Input fields */
 .login-input {
   width: 100%;
   padding: 12px;
@@ -56,7 +56,7 @@ html, body, #root {
   color: #bbbbbb;
 }
 
-/* כפתור */
+/* Button */
 .login-button {
   width: 100%;
   padding: 12px;
@@ -75,7 +75,7 @@ html, body, #root {
   background: #ffcc00;
 }
 
-/* טקסט למטה */
+/* Text below */
 .signup-text {
   margin-top: 20px;
   font-size: 0.85rem;

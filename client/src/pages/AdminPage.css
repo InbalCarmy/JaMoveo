@@ -7,7 +7,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* כותרת עליונה */
+/* Top header */
 .admin-header {
   display: flex;
   justify-content: space-between;
@@ -18,7 +18,7 @@
 }
 
 .logo span {
-  color: #ffdd57; /* צהוב */
+  color: #ffdd57; /* Yellow */
   font-size: 1.6rem;
   font-weight: bold;
 }
@@ -96,7 +96,7 @@
   background: #ffcc00;
 }
 
-/* טיפים */
+/* Tips */
 .search-tips {
   background: rgba(255,255,255,0.05);
   border-radius: 8px;
@@ -134,12 +134,12 @@
   border-radius: 12px;
 }
 .controls-box {
-  text-align: left;   /* כל התוכן יהיה מיושר לצד שמאל */
-  padding-left: 20px; /* שומר על ריווח מינימלי */
+  text-align: left;   /* All content will be aligned to the left */
+  padding-left: 20px; /* Maintains minimal spacing */
 }
 .controls-box ul {
   list-style: none;
-  padding-left: 0;  /* מבטל ריווח מוגזם של ul */
+  padding-left: 0;  /* Cancels excessive spacing of ul */
   margin: 0;
 }
 .members-box h3,
@@ -153,7 +153,7 @@
 .controls-box li {
   display: flex;
   align-items: center;
-  gap: 8px; /* אייקון קטן ואז טקסט */
+  gap: 8px; /* Small icon and then text */
   margin-bottom: 8px;
   font-size: clamp(0.9rem, 0.5vw, 1.3rem);
 }
@@ -179,7 +179,7 @@
   border-radius: 6px;
 }
 
-/* תחתית */
+/* Footer */
 .admin-footer {
   text-align: center;
   padding: 10px;

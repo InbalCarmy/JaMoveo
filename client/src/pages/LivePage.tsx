@@ -21,7 +21,7 @@ export default function LivePage() {
       return;
     }
 
-    // מאזין לכיבוי שיר מהאדמין
+    // Listen for song end from admin
     socket.on("quit", () => {
       console.log("⏹️ Admin ended the song session");
       if (user?.role === "admin") {
@@ -36,18 +36,6 @@ export default function LivePage() {
     };
   }, [song, navigate, user]);
 
-//   // גלילה אוטומטית איטית
-// useEffect(() => {
-//   let scrollInterval: NodeJS.Timeout;
-//   if (autoScroll) {
-//     scrollInterval = setInterval(() => {
-//       window.scrollBy(0, 1); // תמיד גולל פיקסל 1
-//     }, scrollSpeed); // הזמן בין הגלילות תלוי במהירות
-//   }
-//   return () => clearInterval(scrollInterval);
-// }, [autoScroll, scrollSpeed]);
-
-
 
 const handleScrollSpeed = () => {
   if (!autoScroll) {
@@ -58,7 +46,7 @@ const handleScrollSpeed = () => {
     const currentIndex = speedSteps.indexOf(speedLevel);
     const nextIndex = (currentIndex + 1) % speedSteps.length;
 
-    // אם חזרנו להתחלה → מפסיקים
+    // If we returned to the beginning → stop
     if (nextIndex === 0) {
       setAutoScroll(false);
       setSpeedLevel(1);
@@ -73,8 +61,8 @@ const handleScrollSpeed = () => {
   let scrollInterval: NodeJS.Timeout;
 
   if (autoScroll) {
-    const baseInterval = 50; // בסיס לגלילה רגילה
-    const intervalSpeed = baseInterval / speedLevel; // ככל שמהירות גבוהה → זמן קצר יותר
+    const baseInterval = 50; // Base for normal scroll
+    const intervalSpeed = baseInterval / speedLevel; // Higher speed → shorter time
     scrollInterval = setInterval(() => {
       window.scrollBy(0, 1); // scroll down
     }, intervalSpeed);
@@ -96,11 +84,11 @@ const handleScrollSpeed = () => {
   const isVocals = user?.instrument?.toLowerCase() === "vocals";
 
 
-  // זיהוי אם השיר בעברית → כיוון RTL
+  // Detect if song is in Hebrew → RTL direction
   const isHebrew = /[\u0590-\u05FF]/.test(song.title) || /[\u0590-\u05FF]/.test(song.artist);
   const direction = isHebrew ? "rtl" : "ltr";
 
-    // הכנה לפיצול שורות
+    // Prepare for line splitting
   const lyricsLines = song.lyrics?.split("\n") || [];
   const chordsLines = song.chords?.split("\n") || [];
 
@@ -145,31 +133,6 @@ const handleScrollSpeed = () => {
             </div>
         ))}
         </div>
-
-      {/* כפתורי שליטה */}
-{/* <div className="floating-buttons">
-  <button
-    className="toggle-scroll-btn"
-    onClick={() => setAutoScroll(prev => !prev)}
-  >
-    {autoScroll ? "Stop Auto-scroll" : "Start Auto-scroll"}
-  </button>
-
-  {autoScroll && (
-    <div className="scroll-speed-control">
-      <label>Scroll speed:</label>
-      <input
-        type="range"
-        min="10"
-        max="200"
-        step="10"
-        value={scrollSpeed}
-        onChange={(e) => setScrollSpeed(Number(e.target.value))}
-      />
-      <span>{scrollSpeed}ms</span>
-    </div>
-  )}
-</div> */}
 
 <div className="auto-scroll-right">
   <button className="auto-scroll-btn" onClick={handleScrollSpeed}>

@@ -3,7 +3,7 @@ import { auth, db } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, collection, query, where, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import "./Signup.css"; // אותו עיצוב כמו login
+import "./Signup.css"; // Same styling as login
 
 export default function SignupUser() {
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ export default function SignupUser() {
     e.preventDefault();
 
     try {
-      // בדיקת ייחודיות username
+      // Check username uniqueness
       const usersRef = collection(db, "users");
       const q = query(usersRef, where("username", "==", username));
       const querySnapshot = await getDocs(q);
@@ -25,19 +25,19 @@ export default function SignupUser() {
         return;
       }
 
-      // יצירת משתמש רגיל ב-Auth
+      // Create regular user in Auth
       const cred = await createUserWithEmailAndPassword(auth, email, password);
 
-      // שמירת פרטי המשתמש ב-Firestore
+      // Save user details in Firestore
       await setDoc(doc(db, "users", cred.user.uid), {
         username,
         email,
         instrument,
-        role: "user" // ✅ תמיד USER
+        role: "user" // Always USER
       });
 
       alert("✅ Signup successful!");
-      navigate("/"); // חזרה לעמוד login
+      navigate("/"); // Return to login page
     } catch (error: any) {
       alert("❌ Error: " + error.message);
     }

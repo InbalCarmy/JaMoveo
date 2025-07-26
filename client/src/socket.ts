@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-// יצירת חיבור אחד לכל האפליקציה
+// Creating a single connection for the entire application
 const SERVER_URL =
   process.env.NODE_ENV === "production"
     ? window.location.origin

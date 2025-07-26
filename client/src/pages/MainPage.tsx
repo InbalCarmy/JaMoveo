@@ -12,25 +12,25 @@ export default function MainPage() {
   useEffect(() => {
     if (!user) return;
 
-    // שולח join
+    // Send join
     socket.emit("join", {
       username: user.username,
       role: user.instrument || "Player"
     });
 
-    // מאזין לשיר שנבחר → עובר ל-LivePage
+    // Listen for selected song → navigate to LivePage
     socket.on("songSelected", (song) => {
       console.log("🎵 USER: received song selection", song);
       navigate("/live", { state: { song } });
     });
 
-    // מאזין לכיבוי שיר → חוזר למסך המתנה
+    // Listen for song end → return to waiting screen
     socket.on("quit", () => {
       console.log("⏹️ USER: admin ended the song session");
       navigate("/main");
     });
 
-    // מאזין לעדכון רשימת מחוברים
+    // Listen for connected members list update
     socket.on("updateMembers", (members) => {
       console.log("🎸 CLIENT: updateMembers received", members);
       setConnectedMembers(members);
@@ -44,12 +44,12 @@ export default function MainPage() {
   }, [user, navigate]);
 
   const handleLogout = () => {
-    navigate("/"); // אפשר גם להוסיף signOut מה-Firebase
+    navigate("/"); // Can also add signOut from Firebase
   };
 
   return (
     <div className="main-page">
-      {/* כותרת עליונה */}
+      {/* Top header */}
       <header className="main-header">
         <h1 className="logo">🎵 JaMoveo</h1>
         <div className="user-info">
@@ -59,7 +59,7 @@ export default function MainPage() {
       </header>
 
       <div className="main-content">
-        {/* מרכז המסך - הודעת המתנה */}
+        {/* Center screen - waiting message */}
         <div className="waiting-box">
           <h2 className="waiting-title">Waiting for next song</h2>
           <div className="music-icons">🎵 🎶 🎵</div>
@@ -70,7 +70,7 @@ export default function MainPage() {
           </p>
         </div>
 
-        {/* צד ימין - משתמשים מחוברים + סטטוס */}
+        {/* Right side - connected users + status */}
         <aside className="sidebar">
           <div className="members-box">
             <h3>Band Members Online</h3>
@@ -102,7 +102,7 @@ export default function MainPage() {
         </aside>
       </div>
 
-      {/* תחתית */}
+      {/* Footer */}
       <footer className="main-footer">
         🎸 Ready to rock with your band!
       </footer>
