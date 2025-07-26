@@ -23,7 +23,7 @@ export default function LivePage() {
 
     // Listen for song end from admin
     socket.on("quit", () => {
-      console.log("⏹️ Admin ended the song session");
+      // Admin ended the song session
       if (user?.role === "admin") {
         navigate("/admin");
       } else {

@@ -46,7 +46,7 @@ let songs = songFiles.map(file => {
   };
 });
 
-console.log("Loaded songs:", songs.map(s => s.title));
+// Songs loaded successfully
 
 // Connected users list
 let connectedUsers = [];
@@ -64,23 +64,23 @@ app.get("/songs", (req, res) => {
 
 // Socket.IO real-time logic
 io.on("connection", socket => {
-  console.log("SERVER: client connected", socket.id);
+  // Client connected
 
   // When the admin selects a song → broadcast to all users
   socket.on("selectSong", (song) => {
-    console.log("🎵 SERVER: admin selected song", song.title);
+    // Admin selected song
     io.emit("songSelected", song);
   });
 
   // When the admin quits the session
   socket.on("quitSong", () => {
-    console.log("⏹️ SERVER: admin quit song");
+    // Admin quit song
     io.emit("quit");
   });
 
   // When a user joins → add/update them in the connected users list
   socket.on("join", (userData) => {
-    console.log("🎵 SERVER: join received", userData);
+    // User join request received
 
     // Remove any previous entry with the same username OR same socketId to avoid duplicates
     connectedUsers = connectedUsers.filter(u => u.username !== userData.username && u.socketId !== socket.id);
@@ -92,7 +92,7 @@ io.on("connection", socket => {
       role: userData.role
     });
 
-    console.log("🎵 SERVER: connectedUsers now:", connectedUsers);
+    // User list updated
 
     // Send current member list to the joining user immediately
     socket.emit("updateMembers", connectedUsers);
@@ -103,12 +103,12 @@ io.on("connection", socket => {
 
   // When a user explicitly logs out
   socket.on("logout", (userData) => {
-    console.log("🚪 SERVER: user logout", userData.username);
+    // User logout request
 
     // Remove the user by username (more reliable than socketId)
     connectedUsers = connectedUsers.filter(u => u.username !== userData.username);
 
-    console.log("🎵 SERVER: connectedUsers after logout:", connectedUsers);
+    // User list updated after logout
 
     // Broadcast updated user list
     io.emit("updateMembers", connectedUsers);
@@ -116,12 +116,12 @@ io.on("connection", socket => {
 
   // When a user disconnects (fallback for unexpected disconnections)
   socket.on("disconnect", () => {
-    console.log("❌ SERVER: disconnected", socket.id);
+    // Client disconnected
 
     // Remove the user by socketId
     connectedUsers = connectedUsers.filter(u => u.socketId !== socket.id);
 
-    console.log("🎵 SERVER: connectedUsers after disconnect:", connectedUsers);
+    // User list updated after disconnect
 
     // Broadcast updated user list
     io.emit("updateMembers", connectedUsers);

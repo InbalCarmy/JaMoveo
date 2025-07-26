@@ -25,37 +25,34 @@ export default function AdminPage() {
     }
 
     socket.on("connect", () => {
-      console.log("✅ CLIENT: connected to Socket.IO server. ID:", socket.id);
+      // Connected to Socket.IO server
     });
 
     socket.on("disconnect", () => {
-      console.log("❌ CLIENT: disconnected from Socket.IO server");
+      // Disconnected from Socket.IO server
     });
 
     // Set up listeners FIRST before joining
     socket.on("updateMembers", (members) => {
-      console.log("🎸 CLIENT: updateMembers received", members);
+      // Connected members list updated
       setConnectedMembers(members);
     });
 
-    console.log("🎵 CLIENT: sending join", {
-      username: user.username,
-      role: user.role === "admin" ? "Conductor (Admin)" : user.role,
-    });
+    // Sending join request to server
 
     // Ensure socket is connected before joining
     const joinWhenReady = () => {
       if (socket.connected) {
-        console.log("🎵 ADMIN: Socket connected, joining...");
+        // Socket connected, joining session
         socket.emit("join", {
           username: user.username,
           role: user.role === "admin" ? "Conductor (Admin)" : user.role,
         });
       } else {
-        console.log("🎵 ADMIN: Socket not connected, waiting for connection...");
+        // Socket not connected, waiting for connection
         // Wait for connection and then join
         socket.once("connect", () => {
-          console.log("🎵 ADMIN: Socket connected, joining...");
+          // Socket connected, joining session
           socket.emit("join", {
             username: user.username,
             role: user.role === "admin" ? "Conductor (Admin)" : user.role,
@@ -69,13 +66,13 @@ export default function AdminPage() {
 
     // Listen for selected song – admin also goes to LivePage
     socket.on("songSelected", (song) => {
-      console.log("🎵 ADMIN: received songSelected", song);
+      // Received song selection confirmation
       navigate("/live", { state: { song } });
     });
 
     // Listen for song end – will return admin to management page
     socket.on("quit", () => {
-      console.log("⏹️ ADMIN: quit received");
+      // Quit session received
       navigate("/admin");
     });
 
@@ -112,9 +109,9 @@ export default function AdminPage() {
   };
 
   const selectSong = (song: any) => {
-    console.log("🎵 ADMIN: selected song", song);
+    // Admin selected song
     socket.emit("selectSong", song);
-      console.log("✅ ADMIN: selectSong emitted to server");
+      // Song selection sent to server
     alert(`✅ Selected "${song.title}" for the band!`);
   };
 

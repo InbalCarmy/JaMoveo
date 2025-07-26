@@ -11,7 +11,7 @@ export default function ResultsPage() {
   
 
   const selectSong = (song: any) => {
-    console.log("🎵 ADMIN: selected song from results", song);
+    // Admin selected song from results
 
     // Send entire song object to server → all users will receive
     socket.emit("selectSong", song);

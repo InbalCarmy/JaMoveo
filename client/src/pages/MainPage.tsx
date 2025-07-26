@@ -22,35 +22,35 @@ export default function MainPage() {
     // Set up listeners FIRST before joining
     // Listen for selected song → navigate to LivePage
     socket.on("songSelected", (song) => {
-      console.log("🎵 USER: received song selection", song);
+      // User received song selection
       navigate("/live", { state: { song } });
     });
 
     // Listen for song end → return to waiting screen
     socket.on("quit", () => {
-      console.log("⏹️ USER: admin ended the song session");
+      // Admin ended the song session
       navigate("/main");
     });
 
     // Listen for connected members list update
     socket.on("updateMembers", (members) => {
-      console.log("🎸 CLIENT: updateMembers received", members);
+      // Connected members list updated
       setConnectedMembers(members);
     });
 
     // Ensure socket is connected before joining
     const joinWhenReady = () => {
       if (socket.connected) {
-        console.log("🎵 USER: Socket connected, joining...");
+        // Socket connected, joining session
         socket.emit("join", {
           username: user.username,
           role: user.instrument || "Player"
         });
       } else {
-        console.log("🎵 USER: Socket not connected, waiting for connection...");
+        // Socket not connected, waiting for connection
         // Wait for connection and then join
         socket.once("connect", () => {
-          console.log("🎵 USER: Socket connected, joining...");
+          // Socket connected, joining session
           socket.emit("join", {
             username: user.username,
             role: user.instrument || "Player"
