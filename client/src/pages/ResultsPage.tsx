@@ -1,12 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { socket } from "../socket";
-import { useAuth } from "../context/AuthContext";
 import "./ResultsPage.css";
 
 export default function ResultsPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user } = useAuth();
 
   // נקבל את תוצאות החיפוש מה-AdminPage
   const results = location.state?.results || [];

@@ -7,7 +7,7 @@ import "./AdminPage.css";
 export default function AdminPage() {
   const [connectedMembers, setConnectedMembers] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [searchResults] = useState<any[]>([]);
   const [loadingSongs, setLoadingSongs] = useState(false);
 
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ export default function AdminPage() {
       socket.off("disconnect");
       socket.off("updateMembers");
     };
-  }, [user]);
+  }, [user, navigate]);
 
   const handleLogout = () => {
     navigate("/");

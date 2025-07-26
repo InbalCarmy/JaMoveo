@@ -9,7 +9,7 @@ export default function SignupAdmin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [instrument, setInstrument] = useState("guitar");
+  const [instrument] = useState("guitar");
   const navigate = useNavigate();
 
   const handleSignup = async (e: React.FormEvent) => {
