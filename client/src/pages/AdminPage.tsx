@@ -121,7 +121,7 @@ export default function AdminPage() {
       <header className="admin-header">
         <h1 className="logo">🎵 <span>JaMoveo Admin</span></h1>
         <div className="admin-info">
-          <span className="welcome">Welcome, {user?.username || "admin"}!</span>
+          <span className="welcome">Welcome, {user?.username || "admin"}</span>
           <button className="logout-btn" onClick={handleLogout}>Logout</button>
         </div>
       </header>

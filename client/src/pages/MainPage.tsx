@@ -81,7 +81,7 @@ export default function MainPage() {
       <header className="main-header">
         <h1 className="logo">🎵 JaMoveo</h1>
         <div className="user-info">
-          <span>Welcome, {user?.username}!</span>
+          <span>Welcome, {user?.username}</span>
           <button className="logout-btn" onClick={handleLogout}>Logout</button>
         </div>
       </header>

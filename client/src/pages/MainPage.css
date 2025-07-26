@@ -27,6 +27,7 @@
 .user-info {
   display: flex;
   align-items: center;
+  font-weight: bold;
   gap: 20px;
 }
 
@@ -128,6 +129,7 @@
 
 .member-name {
   font-weight: bold;
+  font-size: 1rem;
 }
 
 .member-role {
@@ -135,7 +137,7 @@
   color: #FFD700;
   padding: 2px 8px;
   border-radius: 6px;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .status-green {
