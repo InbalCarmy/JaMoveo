@@ -93,10 +93,15 @@
   max-width: 400px;
 }
 
-.members-box,
-.session-status-box {
+.members-box {
   background: rgba(255, 255, 255, 0.05);
   border: 2px solid #FFD700;
+  border-radius: 12px;
+  padding: 2vw;
+}
+
+.session-status-box {
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   padding: 2vw;
 }

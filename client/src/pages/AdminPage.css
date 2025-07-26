@@ -1,9 +1,9 @@
 .admin-page {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to bottom, #0a2a66, #051838);
-  color: white;
+  background: linear-gradient(160deg, #001F3F, #00122E);
+  color: #fff;
   font-family: Arial, sans-serif;
 }
 
@@ -12,21 +12,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
-  background: rgba(0,0,0,0.3);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid #FFD700;
 }
 
 .logo span {
-  color: #ffdd57; /* Yellow */
-  font-size: 1.6rem;
+  color: #FFD700;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .admin-info {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
 }
 
 .welcome {
@@ -34,15 +34,17 @@
 }
 
 .logout-btn {
-  background: #ff4d4d;
-  color: white;
+  background: #FFD700;
+  color: #001F3F;
+  font-weight: bold;
+  padding: 8px 16px;
   border: none;
-  padding: 8px 15px;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s;
 }
 .logout-btn:hover {
-  background: #e63939;
+  background: #FFC300;
 }
 
 .admin-content {
@@ -57,14 +59,19 @@
 .search-section {
   flex: 2;
   background: rgba(255, 255, 255, 0.05);
+  border: 3px solid #FFD700;
+  box-shadow: 0px 0px 20px #FFD700;
   border-radius: 12px;
-  padding: 2.5vw;
+  padding: 4vw;
+  text-align: center;
+  max-width: 600px;
+  min-width: 350px;
 }
 
 .search-title {
-  font-size: clamp(1.8rem, 1.8vw, 3rem);
-  color: #ffdd57;
-  margin-bottom: 15px;
+  font-size: clamp(1.8rem, 2.5vw, 3rem);
+  color: #FFD700;
+  margin-bottom: 20px;
 }
 
 .search-box {
@@ -75,38 +82,46 @@
 
 .search-input {
   flex: 1;
-  padding: 10px;
+  padding: 12px 16px;
   border-radius: 8px;
-  border: none;
-  background: rgba(255,255,255,0.1);
+  border: 2px solid #FFD700;
+  background: rgba(255, 255, 255, 0.1);
   color: white;
+  font-size: 1.1rem;
+  box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.3);
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0px 0px 15px #FFD700;
 }
 
 .search-btn {
-  background: #ffdd57;
-  color: black;
+  background: #FFD700;
+  color: #001F3F;
   border: none;
   padding: clamp(8px, 1.2vw, 14px) clamp(12px, 2vw, 20px);
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
   font-size: clamp(0.9rem, 1vw, 1.4rem);
+  transition: 0.2s;
 }
 .search-btn:hover {
-  background: #ffcc00;
+  background: #FFC300;
 }
 
 /* Tips */
 .search-tips {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   padding: 15px;
+  text-align: left;
 }
 .search-tips h3 {
-  color: #ffdd57;
+  color: #FFD700;
   margin-bottom: 10px;
   font-size: clamp(1rem, 1vw, 1.6rem);
-
 }
 .search-tips ul {
   list-style: none;
@@ -115,7 +130,6 @@
 .search-tips li {
   margin-bottom: 6px;
   font-size: clamp(0.9rem, 0.5vw, 1.3rem);
-
 }
 
 .admin-sidebar {
@@ -128,9 +142,16 @@
 }
 
 
-.members-box, .controls-box {
-  background: rgba(255,255,255,0.05);
-  padding: 15px;
+.members-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #FFD700;
+  padding: 2vw;
+  border-radius: 12px;
+}
+
+.controls-box {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2vw;
   border-radius: 12px;
 }
 .controls-box {
@@ -144,10 +165,9 @@
 }
 .members-box h3,
 .controls-box h3 {
-  color: #ffdd57;
+  color: #FFD700;
   font-size: clamp(1.1rem, 1vw, 1.8rem);
-  margin-bottom: 12px;
-
+  margin-bottom: 15px;
 }
 
 .controls-box li {
@@ -174,16 +194,19 @@
   font-weight: bold;
 }
 .member-role {
-  background: rgba(255,255,255,0.1);
-  padding: 3px 8px;
+  background: #444;
+  color: #FFD700;
+  padding: 2px 8px;
   border-radius: 6px;
+  font-size: 0.9rem;
 }
 
 /* Footer */
 .admin-footer {
   text-align: center;
-  padding: 10px;
-  font-size: 0.9rem;
-  color: #ddd;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 15px;
+  font-size: 1.1rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
+  opacity: 0.9;
 }

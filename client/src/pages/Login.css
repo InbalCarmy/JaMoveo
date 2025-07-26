@@ -10,20 +10,21 @@ html, body, #root {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(to bottom, #0a2a66, #051838);
-  color: white;
+  background: linear-gradient(160deg, #001F3F, #00122E);
+  color: #fff;
   font-family: Arial, sans-serif;
 }
 
 /* Central box */
 .login-container {
-  background: rgba(10, 50, 100, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  border: 3px solid #FFD700;
+  box-shadow: 0px 0px 20px #FFD700;
   backdrop-filter: blur(10px);
   padding: 40px;
   width: 360px;
   text-align: center;
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Header */
@@ -31,7 +32,7 @@ html, body, #root {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #ffdd57; /* Yellow */
+  color: #FFD700;
 }
 
 .login-subtitle {
@@ -50,6 +51,7 @@ html, body, #root {
   background: rgba(255, 255, 255, 0.1);
   color: white;
   font-size: 0.95rem;
+  box-sizing: border-box;
 }
 
 .login-input::placeholder {
@@ -60,19 +62,19 @@ html, body, #root {
 .login-button {
   width: 100%;
   padding: 12px;
-  background: #ffdd57;
-  color: #000;
+  background: #FFD700;
+  color: #001F3F;
   font-weight: bold;
   font-size: 1rem;
   border: none;
   border-radius: 8px;
   margin-top: 10px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: 0.2s;
 }
 
 .login-button:hover {
-  background: #ffcc00;
+  background: #FFC300;
 }
 
 /* Text below */
@@ -83,7 +85,7 @@ html, body, #root {
 }
 
 .signup-link {
-  color: #ffdd57;
+  color: #FFD700;
   font-weight: bold;
   cursor: pointer;
   text-decoration: underline;

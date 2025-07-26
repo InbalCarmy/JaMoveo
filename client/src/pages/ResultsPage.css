@@ -54,24 +54,38 @@
   background: #FFD700;
   color: #001F3F;
   font-weight: bold;
-  padding: 10px 20px;
+  padding: 9px 24px;
   border: none;
   border-radius: 8px;
-  margin-top: 10px;
+  margin-top: 15px;
   cursor: pointer;
   transition: 0.2s;
+  font-size: 1rem;
+  min-width: 100px;
 }
 
 .select-btn:hover {
   background: #FFC300;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
 }
 
 .back-btn {
   margin-top: 30px;
   background: #FFD700;
   color: #001F3F;
-  padding: 10px 20px;
+  font-weight: bold;
+  padding: 12px 32px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s;
+  font-size: 1.1rem;
+  min-width: 140px;
+}
+
+.back-btn:hover {
+  background: #FFC300;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
 }

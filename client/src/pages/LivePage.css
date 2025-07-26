@@ -87,49 +87,29 @@ font-family: Arial, sans-serif;
 
 }
 
-.song-line {
-    margin-bottom: 20px;
-}
-.chords-line,
-.lyrics-line {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px; /* Space between words */
-  justify-content: flex-start; /* Left/right according to direction */
+.word-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 25px;
 }
 
-.lyrics-line {
-  white-space: pre-wrap; /* Preserves line breaks */
-  text-align: inherit;   /* Respects RTL or LTR */
-  direction: inherit;    /* Takes direction from parent */
-}
-
-.chords-line {
-  white-space: pre-wrap;
-  text-align: inherit;
-  direction: inherit;
-  color: #FFD700; /* Always in yellow */
-  font-weight: bold;
-}
-
-.chord-cell {
-  min-width: 40px; /* Make room even for short words */
-  text-align: center;
+.chord-above {
+  position: absolute;
+  top: -20px;
+  left: 0;
   color: #FFD700; /* Yellow */
+  font-weight: bold;
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
-.lyrics-cell {
-  min-width: 40px;
-  text-align: center;
+.word {
+  display: inline;
 }
 
-.song-part {
-  margin-right: 10px;
-}
-
-.chords-line {
-  color: #FFD700; /* Chords in yellow */
-  /* font-weight: bold; */
+.line-break {
+  display: block;
+  white-space: pre-line;
 }
 
 /* Floating buttons */
