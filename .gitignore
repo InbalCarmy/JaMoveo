@@ -1,0 +1,19 @@
+# Node modules
+**/node_modules
+
+# Build files
+client/.next
+client/out
+client/build
+
+# Logs
+**/*.log*
+
+# Env
+**/.env
+**/.env.local
+
+**/.pnp
+**/.pnp.js
+
+.DS_Store
