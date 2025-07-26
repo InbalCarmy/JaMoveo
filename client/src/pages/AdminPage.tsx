@@ -63,25 +63,12 @@ export default function AdminPage() {
     navigate("/");
   };
 
-//   const searchSongs = async () => {
-//     if (!searchQuery.trim()) return;
-//     setLoadingSongs(true);
-//     try {
-//       const res = await fetch(`http://localhost:5001/songs?q=${encodeURIComponent(searchQuery)}`);
-//       const data = await res.json();
-//       setSearchResults(data);
-//     } catch (err) {
-//       console.error("❌ Error fetching songs:", err);
-//     } finally {
-//       setLoadingSongs(false);
-//     }
-//   };
 
 const searchSongs = async () => {
   if (!searchQuery.trim()) return;
   setLoadingSongs(true);
   try {
-    const res = await fetch(`http://localhost:5001/songs?q=${encodeURIComponent(searchQuery)}`);
+    const res = await fetch(`http://localhost:10000/songs?q=${encodeURIComponent(searchQuery)}`);
     const data = await res.json();
     // ✅ מעבירים את התוצאות ל-ResultsPage
     navigate("/results", { state: { results: data } });
