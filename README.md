@@ -19,8 +19,6 @@ A modern web application that enables bands to rehearse together in real-time wi
 ### 🎼 Song Features
 - **Chord Display** - Guitar chords displayed above lyrics (hidden for vocalists)
 - **Word-by-word Synchronization** - Precise chord timing with individual words
-- **Multiple Formats** - Support for various song structures and arrangements
-- **Visual Enhancements** - Professional typography with golden theme
 
 ## 🚀 Quick Start
 
